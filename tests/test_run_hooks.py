@@ -9,7 +9,7 @@ from sweagent.agent.problem_statement import GithubIssue, TextProblemStatement
 from sweagent.run.hooks.apply_patch import SaveApplyPatchHook
 from sweagent.run.hooks.open_pr import OpenPRConfig, OpenPRHook
 from sweagent.run.hooks.swe_bench_evaluate import SweBenchEvaluate
-from sweagent.types import AgentRunResult
+from sweagent.shared_types import AgentRunResult
 
 
 @pytest.fixture

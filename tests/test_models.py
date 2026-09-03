@@ -8,7 +8,7 @@ from sweagent import __version__
 from sweagent.agent.models import GenericAPIModelConfig, get_model
 from sweagent.tools.parsing import Identity
 from sweagent.tools.tools import ToolConfig
-from sweagent.types import History
+from sweagent.shared_types import History
 
 
 def test_litellm_mock():

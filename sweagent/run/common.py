@@ -16,7 +16,7 @@ from rich import print as rich_print
 from rich.panel import Panel
 
 from sweagent import CONFIG_DIR
-from sweagent.types import AgentInfo, AgentRunResult
+from sweagent.shared_types import AgentInfo, AgentRunResult
 from sweagent.utils.log import get_logger
 from sweagent.utils.serialization import merge_nested_dicts
 

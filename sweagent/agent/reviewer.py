@@ -23,7 +23,7 @@ from sweagent.agent.models import (
 from sweagent.agent.problem_statement import ProblemStatement
 from sweagent.tools.parsing import ActionParser
 from sweagent.tools.tools import ToolConfig
-from sweagent.types import AgentInfo, Trajectory, TrajectoryStep
+from sweagent.shared_types import AgentInfo, Trajectory, TrajectoryStep
 from sweagent.utils.log import get_logger
 
 

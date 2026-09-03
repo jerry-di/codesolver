@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 from sweagent.environment.swe_env import SWEEnv
 from sweagent.run.hooks.abstract import RunHook
-from sweagent.types import AgentRunResult
+from sweagent.shared_types import AgentRunResult
 from sweagent.utils.github import (
     InvalidGithubURL,
     _get_associated_commit_urls,

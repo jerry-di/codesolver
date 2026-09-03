@@ -11,7 +11,7 @@ from sweagent.environment.repo import LocalRepoConfig
 from sweagent.environment.swe_env import SWEEnv
 from sweagent.run.common import _is_promising_patch
 from sweagent.run.hooks.abstract import RunHook
-from sweagent.types import AgentRunResult
+from sweagent.shared_types import AgentRunResult
 from sweagent.utils.log import get_logger
 
 

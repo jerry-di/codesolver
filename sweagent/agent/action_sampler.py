@@ -9,7 +9,7 @@ from sweagent.agent.models import AbstractModel
 from sweagent.agent.problem_statement import ProblemStatement
 from sweagent.exceptions import FormatError
 from sweagent.tools.tools import ToolHandler
-from sweagent.types import Trajectory
+from sweagent.shared_types import Trajectory
 from sweagent.utils.log import get_logger
 
 

@@ -60,7 +60,7 @@ from sweagent.run.hooks.abstract import CombinedRunHooks, RunHook
 from sweagent.run.hooks.apply_patch import SaveApplyPatchHook
 from sweagent.run.merge_predictions import merge_predictions
 from sweagent.run.run_single import RunSingleConfig
-from sweagent.types import AgentRunResult
+from sweagent.shared_types import AgentRunResult
 from sweagent.utils.config import load_environment_variables
 from sweagent.utils.log import (
     add_file_handler,

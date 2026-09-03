@@ -7,7 +7,7 @@ from sweagent.agent.problem_statement import ProblemStatement, ProblemStatementC
 from sweagent.environment.swe_env import SWEEnv
 from sweagent.tools.parsing import ActionOnlyParser
 from sweagent.tools.tools import ToolHandler
-from sweagent.types import AgentRunResult, StepOutput
+from sweagent.shared_types import AgentRunResult, StepOutput
 
 
 class ShellAgent(DefaultAgent):

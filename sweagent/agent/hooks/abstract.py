@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from sweagent.types import AgentInfo, StepOutput, Trajectory
+from sweagent.shared_types import AgentInfo, StepOutput, Trajectory
 
 if TYPE_CHECKING:
     # avoid circular import

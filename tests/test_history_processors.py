@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from sweagent.agent.history_processors import LastNObservations, TagToolCallObservations
-from sweagent.types import History
+from sweagent.shared_types import History
 
 
 def get_history(traj_path: Path):
