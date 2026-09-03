@@ -1,0 +1,18 @@
+# Force LF line endings for all text files.
+#
+# This is required so that the shell/Python scripts under tools/ (which get
+# uploaded into Linux containers) keep their LF shebang lines. On Windows,
+# `core.autocrlf=true` would otherwise turn them into CRLF, breaking the
+# shebang as `#!/usr/bin/env python3\r` ("env: 'python3\r': No such file").
+* text=auto eol=lf
+
+# Never attempt line-ending conversion on binary files.
+*.gif binary
+*.ico binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.png binary
+*.pyc binary
+*.whl binary
+*.zip binary
