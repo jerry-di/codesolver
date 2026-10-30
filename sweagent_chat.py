@@ -23,18 +23,28 @@ console = Console()
 DEFAULT_MODEL = "deepseek/deepseek-chat"
 DEFAULT_CONFIG = CONFIG_DIR / "default.yaml"
 
+EXIT_KEYWORDS = ("exit", "quit", "q")
 
-def read_task() -> str:
-    """Read a multi-line task. Finish with an empty line."""
+
+def read_task() -> str | None:
+    """Read a multi-line task. Finish with an empty line.
+
+    Returns None if the user asks to exit the REPL (``exit``/``quit``/``q``).
+    """
     console.print("[bold cyan]输入任务描述：[/bold cyan]")
-    console.print("[dim]（可多行粘贴；结束时空一行再回车）[/dim]")
+    console.print("[dim]（可多行粘贴；结束时空一行再回车；输入 exit 退出）[/dim]")
     lines: list[str] = []
     while True:
-        line = input()
+        try:
+            line = input()
+        except EOFError:
+            return None
         if line.strip() == "":
             if lines:
                 break
             continue
+        if line.strip().lower() in EXIT_KEYWORDS:
+            return None
         lines.append(line)
     return "\n".join(lines).strip()
 
@@ -60,26 +70,34 @@ def run_one(repo: str, task: str, model: str, apply_patch: bool) -> None:
         cmd.append("--actions.apply_patch_locally=True")
 
     console.print("\n[bold green]>>> 正在运行[/bold green]")
+    console.print(f"[dim]仓库: {repo} | 模型: {model} | 应用补丁: {apply_patch}[/dim]")
     console.print(f"[dim]{' '.join(cmd)}[/dim]\n")
-    subprocess.run(cmd)
+
+    result = subprocess.run(cmd)
+    if result.returncode == 0:
+        console.print("[bold green]✅ 运行完成[/bold green]")
+    else:
+        console.print(f"[bold red]❌ 运行失败（退出码 {result.returncode}）[/bold red]")
 
 
 def main() -> None:
     console.print("[bold]🤖 SWE-agent 交互式 REPL[/bold]")
-    model = Prompt.ask("模型", default=DEFAULT_MODEL)
-    repo = Prompt.ask("仓库路径", default=str(REPO_ROOT))
-    apply_patch = Confirm.ask("跑完自动应用补丁到本地仓库？", default=True)
+    try:
+        model = Prompt.ask("模型", default=DEFAULT_MODEL)
+        repo = Prompt.ask("仓库路径", default=str(REPO_ROOT))
+        apply_patch = Confirm.ask("跑完自动应用补丁到本地仓库？", default=True)
 
-    while True:
-        task = read_task()
-        if not task:
-            console.print("[yellow]任务为空，已跳过[/yellow]")
-            continue
-        run_one(repo, task, model, apply_patch)
+        while True:
+            task = read_task()
+            if task is None:
+                break
+            run_one(repo, task, model, apply_patch)
 
-        repo = Prompt.ask("下一个任务的仓库路径（回车保持不变）", default=repo)
-        if not Confirm.ask("继续下一个任务？", default=True):
-            break
+            repo = Prompt.ask("下一个任务的仓库路径（回车保持不变）", default=repo)
+            if not Confirm.ask("继续下一个任务？", default=True):
+                break
+    except KeyboardInterrupt:
+        console.print()
 
     console.print("再见 👋")
 
