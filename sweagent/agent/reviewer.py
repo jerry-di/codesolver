@@ -21,9 +21,9 @@ from sweagent.agent.models import (
     get_model,
 )
 from sweagent.agent.problem_statement import ProblemStatement
+from sweagent.shared_types import AgentInfo, Trajectory, TrajectoryStep
 from sweagent.tools.parsing import ActionParser
 from sweagent.tools.tools import ToolConfig
-from sweagent.shared_types import AgentInfo, Trajectory, TrajectoryStep
 from sweagent.utils.log import get_logger
 
 

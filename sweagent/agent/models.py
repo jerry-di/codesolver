@@ -36,8 +36,8 @@ from sweagent.exceptions import (
     ModelConfigurationError,
     TotalCostLimitExceededError,
 )
-from sweagent.tools.tools import ToolConfig
 from sweagent.shared_types import History, HistoryItem
+from sweagent.tools.tools import ToolConfig
 from sweagent.utils.log import get_logger
 
 try:

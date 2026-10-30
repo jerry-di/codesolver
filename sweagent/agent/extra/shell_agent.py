@@ -5,9 +5,9 @@ from sweagent.agent.agents import DefaultAgent, ShellAgentConfig
 from sweagent.agent.models import HumanModel, HumanModelConfig, get_model
 from sweagent.agent.problem_statement import ProblemStatement, ProblemStatementConfig
 from sweagent.environment.swe_env import SWEEnv
+from sweagent.shared_types import AgentRunResult, StepOutput
 from sweagent.tools.parsing import ActionOnlyParser
 from sweagent.tools.tools import ToolHandler
-from sweagent.shared_types import AgentRunResult, StepOutput
 
 
 class ShellAgent(DefaultAgent):
