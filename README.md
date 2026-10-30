@@ -11,7 +11,7 @@
 ## 环境要求
 
 - Python 3.11+
-- 一个 [DeepSeek API Key](https://platform.deepseek.com/)
+- 一个 DeepSeek API Key（前往 DeepSeek 开放平台申请）
 
 ## 安装
 
