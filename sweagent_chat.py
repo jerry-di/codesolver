@@ -16,9 +16,14 @@ import sys
 from rich.console import Console
 from rich.prompt import Confirm, Prompt
 
-from sweagent import CONFIG_DIR, REPO_ROOT
-
 console = Console()
+
+try:
+    from sweagent import CONFIG_DIR, REPO_ROOT
+except ImportError as e:
+    console.print(f"[bold red]❌ 无法导入 sweagent：{e}[/bold red]")
+    console.print("[dim]请先在项目根目录安装依赖：pip install -e .[/dim]")
+    raise SystemExit(1)
 
 DEFAULT_MODEL = "deepseek/deepseek-chat"
 DEFAULT_CONFIG = CONFIG_DIR / "default.yaml"
